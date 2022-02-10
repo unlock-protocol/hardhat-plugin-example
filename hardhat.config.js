@@ -11,14 +11,19 @@ task('lock:info', "Prints some info about a lock")
     // get lock instance
     const lock = await unlock.getLock(lockAddress)
 
-    // eslint-disable-next-line no-console
+    // fetch potential ERC20 token address
+    const tokenAddress = await lock.tokenAddress()
+    
     console.log(
-      `LOCK '${await lock.name()}' \n`,
+      `LOCK \n`,
+      ` - name: '${await lock.name()}' \n`,
+      ` - address: ${lock.address} \n`,
       ` - keys: ${await lock.totalSupply()} / ${await lock.maxNumberOfKeys()} \n`,
       ` - owners: ${await lock.numberOfOwners()} \n`,
+      ` - currency: ${tokenAddress === ethers.constants.AddressZero ? 'ETH' : tokenAddress } \n`,
+      ` - balance: ${ethers.utils.formatUnits(await ethers.provider.getBalance(lock.address), 18)} \n`,
       ` - symbol: ${await lock.symbol()} \n`,
-      ` - balance: ${ethers.utils.formatUnits(await ethers.provider.getBalance(lock.address), 18)}`,
-      ` - version: ${await lock.publicLockVersion()} /n`
+      ` - version: ${await lock.publicLockVersion()}`
     )
 
   })
