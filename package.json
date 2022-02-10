@@ -1,0 +1,15 @@
+{
+  "name": "@unlock-protocol/hardhat-plugin-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:unlock-protocol/hardhat-plugin-example.git",
+  "author": "Clement Renaud <clement@unlock-protocol.com>",
+  "license": "MIT",
+  "dependencies": {
+    "hardhat": "^2.8.3"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.0",
+    "ethers": "^5.0.0"
+  }
+}
