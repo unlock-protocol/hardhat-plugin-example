@@ -32,5 +32,11 @@ task('lock:info', "Prints some info about a lock")
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: {
+    version: "0.8.7",
+    optimizer: {
+      enabled: true,
+      runs: 200,
+    }
+  }
 };

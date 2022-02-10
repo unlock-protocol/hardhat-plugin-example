@@ -580,10 +580,10 @@
   resolved "https://registry.yarnpkg.com/@unlock-protocol/contracts/-/contracts-0.0.3.tgz#c8983cfe8a2613bd71f5feaa17b9f2b4110f1c5d"
   integrity sha512-mYr0q2pqTjZWtZvKWFWcLd0D8Yx5K1D0XDNkJrHFwA5r0Dzk1z88EBLCZeha6esgyuQGr3xpvVFFshYYU8Zemw==
 
-"@unlock-protocol/hardhat-plugin@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@unlock-protocol/hardhat-plugin/-/hardhat-plugin-0.0.4.tgz#ac089c98d940e088570cee9ec9d193f4e2e1b564"
-  integrity sha512-aHUOzLUGIbSJda30Hj1BDvHtaj67JGnQyhQvXKGrPHYKnQuBwpdkAyaQPaQfxIhPjyTI0nsOP/6MLm7ctCq4PQ==
+"@unlock-protocol/hardhat-plugin@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@unlock-protocol/hardhat-plugin/-/hardhat-plugin-0.0.5.tgz#d7b9c7568fd5c2e19cc6b41d28fbb9fe1955c3d0"
+  integrity sha512-nv+G+jAdjXgUif3nuVtqE7GRw6S6bCTJ/DpFVl4Hd/exrrrh0nF8oK0cs798FA4Tb5eqmi9zE78uW5HEffsxBg==
   dependencies:
     "@nomiclabs/hardhat-ethers" "2.0.2"
     "@openzeppelin/hardhat-upgrades" "^1.14.0"
