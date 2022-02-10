@@ -1,17 +1,27 @@
-require("@nomiclabs/hardhat-waffle");
+require("@unlock-protocol/hardhat-plugin");
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
+task('lock:info', "Prints some info about a lock")
+  .addParam('lockAddress', "The lock address")
+  .setAction(async ({ lockAddress }, { ethers, unlock }) => {
+    
+    if (!lockAddress) {
+      throw new Error('LOCK BALANCE > Missing lock address.')
+    }
 
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
+    // get lock instance
+    const lock = await unlock.getLock(lockAddress)
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+    // eslint-disable-next-line no-console
+    console.log(
+      `LOCK '${await lock.name()}' \n`,
+      ` - keys: ${await lock.totalSupply()} / ${await lock.maxNumberOfKeys()} \n`,
+      ` - owners: ${await lock.numberOfOwners()} \n`,
+      ` - symbol: ${await lock.symbol()} \n`,
+      ` - balance: ${ethers.utils.formatUnits(await ethers.provider.getBalance(lock.address), 18)}`,
+      ` - version: ${await lock.publicLockVersion()} /n`
+    )
+
+  })
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
