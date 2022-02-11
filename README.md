@@ -17,6 +17,6 @@ npx hardhat lock:info --lock-address <your-lock-address> --network mainnet
 Create a lock and buy a bunch of keys
 
 ```
-yarn hardhat run scripts/createSampleLocks.js
+yarn hardhat run scripts/createSampleLock.js
 ```
 

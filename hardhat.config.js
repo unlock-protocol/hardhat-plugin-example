@@ -38,5 +38,14 @@ module.exports = {
       enabled: true,
       runs: 200,
     }
+  },
+  defaultNetwork: "hardhat",
+  networks: {
+    hardhat: {
+      // needed to deploy the contracts protocol locally
+      gas: 1000000000,
+      allowUnlimitedContractSize: true,
+      blockGasLimit: 1000000000,
+    }
   }
 };

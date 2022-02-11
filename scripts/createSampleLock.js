@@ -4,13 +4,18 @@ const { constants, utils } = ethers
 // create sample data
 const lockParams = {
   expirationDuration: 60 * 60 * 24 * 30, // 30 days
-  currencyContractAddress: constants.AddressZero,
+  currencyContractAddress: constants.AddressZero, // address 0 is ETH but could be any ERC20 token
   keyPrice: utils.parseEther('.001').toNumber(), // in wei
-  maxNumberOfKeys: 10,
-  name: 'Unlock-Protocol Lock Sample',
+  maxNumberOfKeys: 100,
+  name: 'Unlock-Protocol Sample Lock',
 }
 
 async function main() {
+
+  // eslint-disable-next-line no-console
+  console.log(
+    `LOCK SAMPLE > Deploying the Unlock Protocol contracts...`
+  )
 
   // deploy the Unlock conctrats
   await unlock.deployProtocol()
