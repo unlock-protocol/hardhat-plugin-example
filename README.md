@@ -9,7 +9,7 @@ This project demonstrates a basic use case for Hardhat Unlock.
 3. from your terminal, try running the following (with the address of your lock):
 
 ```shell
-npx hardhat lock:info --lock-address <your-lock-address> --network mainnet
+npx hardhat lock:info --lock-address <your-lock-address> --network <your network>
 ```
 
 ### Test locally
