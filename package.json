@@ -6,7 +6,7 @@
   "author": "Clement Renaud <clement@unlock-protocol.com>",
   "license": "MIT",
   "dependencies": {
-    "@unlock-protocol/hardhat-plugin": "latest",
+    "@unlock-protocol/hardhat-plugin": "0.0.10",
     "hardhat": "^2.8.3",
     "humanize-duration": "^3.27.1"
   },

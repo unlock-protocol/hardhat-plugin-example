@@ -5,7 +5,7 @@ const { constants, utils } = ethers
 const lockParams = {
   expirationDuration: 60 * 60 * 24 * 30, // 30 days
   currencyContractAddress: constants.AddressZero, // address 0 is ETH but could be any ERC20 token
-  keyPrice: utils.parseEther('.001').toNumber(), // in wei
+  keyPrice: utils.parseEther('.001'), // in wei
   maxNumberOfKeys: 100,
   name: 'Unlock-Protocol Sample Lock',
 }
@@ -34,28 +34,21 @@ async function main() {
   // purchase a bunch of keys
   const { keyPrice } = lockParams
   const purchasers = await ethers.getSigners()
-  const txs = await Promise.all(
-    purchasers.map((purchaser) =>
-      newLock
-        .connect(purchaser)
+  const tx = await newLock
         .purchase(
-          keyPrice,
-          purchaser.address,
-          constants.AddressZero,
-          constants.AddressZero,
-          [],
-          { value: keyPrice }
+          purchasers.map(() => keyPrice),
+          purchasers.map((purchaser) => purchaser.address),
+          purchasers.map(() => constants.AddressZero),
+          purchasers.map(() => constants.AddressZero),
+          purchasers.map(() => []),
+          { value: keyPrice.mul(purchasers.length) }
         )
-    )
-  )
-
-  const purchases = await Promise.all(txs.map((tx) => tx.wait()))
-  purchases
-    .map(({ events }) => events.find(({ event }) => event === 'Transfer'))
+  
+  const { events }  = await tx.wait()
+  events.filter(({ event }) => event === 'Transfer')
     .forEach(({ args: { to, tokenId } }) => {
-      // eslint-disable-next-line no-console
-      console.log(`LOCK SAMPLE > key (${tokenId}) purchased by ${to}`)
-    })
+        console.log(`LOCK SAMPLE > key (${tokenId}) purchased by ${to}`)
+      })
 }
 
 // execute as standalone

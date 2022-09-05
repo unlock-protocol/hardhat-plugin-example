@@ -12,7 +12,7 @@ task('lock:info', "Prints some info about a lock")
     }
 
     // get lock instance
-    const lock = await unlock.getLock(lockAddress)
+    const lock = await unlock.getLockContract(lockAddress)
 
     // fetch potential ERC20 token address
     const tokenAddress = await lock.tokenAddress()
@@ -40,18 +40,5 @@ task('lock:info', "Prints some info about a lock")
 module.exports = {
   solidity: {
     version: "0.8.7",
-    optimizer: {
-      enabled: true,
-      runs: 200,
-    }
   },
-  defaultNetwork: "hardhat",
-  networks: {
-    hardhat: {
-      // needed to deploy the contracts protocol locally
-      gas: 1000000000,
-      allowUnlimitedContractSize: true,
-      blockGasLimit: 1000000000,
-    }
-  }
 };
